@@ -9,7 +9,7 @@
  */
 
 
-const Q = require('better-queue');
+const Q = require('fastq');
 const uuid = require('uuid').v4;
 
 /**
@@ -48,7 +48,7 @@ const acc_callback = ( num, cb ) => {
                 }
                 break;
         }
-    });
+    }, 1);
 
     let ctr = 0;
 
