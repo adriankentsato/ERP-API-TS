@@ -1,3 +1,14 @@
+/**
+ * Created By: Kent Adrian Sato
+ * Date: 10/21/2023
+ * 
+ * This is a helper function that accumulates data from multiple callbacks
+ *      just like Promise.all functionality. It uses queue to store the data
+ *      temporarily until a limit is reached for it call the callback to throw
+ *      in the error or the data being accumulated.
+ */
+
+
 const Q = require('better-queue');
 const uuid = require('uuid').v4;
 
@@ -20,7 +31,7 @@ const acc_callback = ( num, cb ) => {
             default:
                 data.push( obj );
 
-                xb();
+                xb(); // This is needed to execute the next item in queue
 
                 // Check if the length satisfies the number of accumated data to return
                 if ( data.length === num ) {
@@ -43,7 +54,7 @@ const acc_callback = ( num, cb ) => {
 
     return {
         accumulate: ( obj ) => {
-            ctr++;
+            ++ctr;
 
             if ( ctr > num ) {
                 ctr = num;

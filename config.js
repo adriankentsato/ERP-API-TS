@@ -1,7 +1,14 @@
+/**
+ * Created By: Kent Adrian Sato
+ * Date: 10/21/2023
+ */
+
+
 require('dotenv').config({ path: '.env' });
 
 module.exports.Config = {
     version: process.env.VERSION,
+    port: +process.env.PORT,
 
     db: {
         host: process.env.DB_HOST,
